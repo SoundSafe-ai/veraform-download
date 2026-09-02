@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Download VeraForm for macOS, Windows, or Linux and install it in under a minute.">
+<title>Install VeraForm</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #f6f2e9;
+    --surface: #ffffff;
+    --surface-2: #efe8d8;
+    --border: #ddd2b8;
+    --text: #1a1510;
+    --text-dim: #6e6455;
+    --text-faint: #9a8f7c;
+    --accent: #9c7a22;
+    --accent-ink: #ffffff;
+    --accent-soft: rgba(156, 122, 34, 0.1);
+    --success: #4f7a3f;
+
+    --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+    --font-body: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0a0d12;
+      --surface: #12161d;
+      --surface-2: #1b212a;
+      --border: #2a323d;
+      --text: #edeae2;
+      --text-dim: #9aa3ad;
+      --text-faint: #616b74;
+      --accent: #d3ac57;
+      --accent-ink: #14100a;
+      --accent-soft: rgba(211, 172, 87, 0.12);
+      --success: #7fae6b;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #0a0d12;
+    --surface: #12161d;
+    --surface-2: #1b212a;
+    --border: #2a323d;
+    --text: #edeae2;
+    --text-dim: #9aa3ad;
+    --text-faint: #616b74;
+    --accent: #d3ac57;
+    --accent-ink: #14100a;
+    --accent-soft: rgba(211, 172, 87, 0.12);
+    --success: #7fae6b;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { background: var(--bg); }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- header ---------- */
+
+  header.top {
+    padding: 28px 0 0;
+  }
+
+  .mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .mark .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex: none;
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero {
+    padding: 56px 0 40px;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+    align-items: end;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 14px;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 60px);
+    line-height: 1.03;
+    letter-spacing: -0.01em;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .hero p {
+    font-size: 17px;
+    color: var(--text-dim);
+    max-width: 46ch;
+    margin: 0;
+  }
+
+  /* ---------- scan graphic ---------- */
+
+  .scan {
+    position: relative;
+    height: 128px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    background: var(--surface);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    padding: 16px 16px 0;
+  }
+
+  .scan .bar {
+    flex: 1;
+    background: var(--border);
+    border-radius: 1px 1px 0 0;
+  }
+
+  .scan .sweep {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 38%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-soft) 45%,
+      var(--accent-soft) 55%,
+      transparent
+    );
+    animation: sweep 5s ease-in-out infinite;
+  }
+
+  .scan .readout {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    color: var(--text-faint);
+  }
+
+  @keyframes sweep {
+    0%   { transform: translateX(-120%); }
+    50%  { transform: translateX(220%); }
+    100% { transform: translateX(220%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scan .sweep { animation: none; display: none; }
+  }
+
+  /* ---------- platform grid ---------- */
+
+  .platforms {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 8px 0 4px;
+  }
+
+  .card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface);
+    padding: 22px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+  }
+
+  .card .glyph {
+    width: 30px;
+    height: 30px;
+    color: var(--text);
+  }
+
+  .card h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 21px;
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+
+  .card .meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-faint);
+    letter-spacing: 0.01em;
+    font-variant-numeric: tabular-nums;
+    margin-top: -8px;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 14.5px;
+    text-decoration: none;
+    border-radius: 3px;
+    padding: 11px 14px;
+    margin-top: 2px;
+    transition: opacity 0.15s ease;
+  }
+
+  .btn:hover { opacity: 0.86; }
+  .btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .btn svg { width: 14px; height: 14px; flex: none; }
+
+  .note {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.55;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+
+  .note code {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background: var(--surface-2);
+    padding: 1.5px 5px;
+    border-radius: 2px;
+    color: var(--text);
+  }
+
+  .badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2px 8px;
+  }
+
+  /* ---------- key section ---------- */
+
+  .key-section {
+    margin-top: 36px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface-2);
+    padding: 18px 22px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .key-section svg {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    color: var(--accent);
+  }
+
+  .key-section p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  .key-section strong { color: var(--text); font-weight: 600; }
+
+  /* ---------- footer ---------- */
+
+  footer {
+    margin-top: 44px;
+    padding: 22px 0 40px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-size: 12.5px;
+    color: var(--text-faint);
+  }
+
+  footer .fmono {
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- responsive ---------- */
+
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; gap: 28px; }
+    .platforms { grid-template-columns: 1fr; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="mark"><span class="dot"></span>VeraForm</div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Desktop application</p>
+      <h1>Install VeraForm</h1>
+      <p>Analyzes video for signs of synthetic manipulation, directly on your machine. Pick your platform below — install takes under a minute.</p>
+    </div>
+    <div class="scan" aria-hidden="true">
+      <div class="sweep"></div>
+      <div class="bar" style="height:22%"></div>
+      <div class="bar" style="height:48%"></div>
+      <div class="bar" style="height:31%"></div>
+      <div class="bar" style="height:64%"></div>
+      <div class="bar" style="height:40%"></div>
+      <div class="bar" style="height:71%"></div>
+      <div class="bar" style="height:35%"></div>
+      <div class="bar" style="height:58%"></div>
+      <div class="bar" style="height:27%"></div>
+      <div class="bar" style="height:46%"></div>
+      <div class="bar" style="height:63%"></div>
+      <div class="bar" style="height:33%"></div>
+      <div class="bar" style="height:52%"></div>
+      <div class="bar" style="height:24%"></div>
+      <div class="bar" style="height:44%"></div>
+      <div class="readout">frame_analysis · live</div>
+    </div>
+  </section>
+
+  <section class="platforms">
+
+    <!-- macOS -->
+    <div class="card">
+      <span class="badge">Apple Silicon</span>
+      <svg class="glyph" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="28" height="28" rx="7" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="15" cy="15" r="6" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      <h2>macOS</h2>
+      <div class="meta">v0.1.0 &nbsp;·&nbsp; 96.7 MB &nbsp;·&nbsp; .dmg</div>
+      <a class="btn" href="https://h0sdlw0d-8200.thundercompute.net/VeraForm-0.1.0-arm64.dmg" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5V11M8 11L4.5 7.5M8 11L11.5 7.5M2 13H14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Download for macOS
+      </a>
+      <p class="note">Opens with a "damaged" warning — that's an unsigned-build quarantine flag, not a broken file. In Terminal: <code>xattr -cr /Applications/VeraForm.app</code>, then right-click → Open.</p>
+    </div>
+
+    <!-- Windows -->
+    <div class="card">
+      <svg class="glyph" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="12.5" height="12.5" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="16.5" y="1" width="12.5" height="12.5" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="1" y="16.5" width="12.5" height="12.5" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="16.5" y="16.5" width="12.5" height="12.5" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      <h2>Windows</h2>
+      <div class="meta">v0.1.0 &nbsp;·&nbsp; 79.6 MB &nbsp;·&nbsp; .exe</div>
+      <a class="btn" href="https://h0sdlw0d-8200.thundercompute.net/VeraForm-Setup-0.1.0.exe" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5V11M8 11L4.5 7.5M8 11L11.5 7.5M2 13H14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Download for Windows
+      </a>
+      <p class="note">SmartScreen will flag the installer as unrecognized — this is expected for an unsigned build. Click <strong>More info → Run anyway</strong> to continue.</p>
+    </div>
+
+    <!-- Linux -->
+    <div class="card">
+      <svg class="glyph" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="28" height="28" rx="7" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M9.5 12.5H12M18 12.5H20.5M9.5 19C9.5 19 11.5 21 15 21C18.5 21 20.5 19 20.5 19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <h2>Linux</h2>
+      <div class="meta">v0.1.0 &nbsp;·&nbsp; 106.1 MB &nbsp;·&nbsp; .AppImage</div>
+      <a class="btn" href="https://h0sdlw0d-8200.thundercompute.net/VeraForm-0.1.0.AppImage" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5V11M8 11L4.5 7.5M8 11L11.5 7.5M2 13H14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Download for Linux
+      </a>
+      <p class="note">Make it executable first: <code>chmod +x VeraForm-0.1.0.AppImage</code>, then run it. Add <code>--no-sandbox</code> if it refuses to launch.</p>
+    </div>
+
+  </section>
+
+  <section class="key-section">
+    <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="9" width="14" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 9V6a3.5 3.5 0 0 1 7 0v3" stroke="currentColor" stroke-width="1.5"/></svg>
+    <p>On first launch, VeraForm asks for an <strong>inference access key</strong> — this is what connects the app to SoundSafe's detection engine. It's entered once and stored encrypted on your device, never inside the installer itself. Whoever sent you this link has the key.</p>
+  </section>
+
+  <footer>
+    <span>VeraForm Desktop · v0.1.0</span>
+    <span class="fmono">Video analysis live &nbsp;·&nbsp; Audio analysis not yet enabled</span>
+  </footer>
+
+</div>
+</body>
+</html>
