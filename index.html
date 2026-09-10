@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Download VeraForm for macOS, Windows, or Linux and install it in under a minute.">
 <title>Install VeraForm</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -102,6 +104,21 @@
     border-radius: 50%;
     background: var(--accent);
     flex: none;
+  }
+
+  /* ---------- reveal ---------- */
+
+  .reveal {
+    display: flex;
+    justify-content: center;
+    padding: 36px 0 4px;
+  }
+
+  .reveal video {
+    width: 152px;
+    height: auto;
+    display: block;
+    border-radius: 8px;
   }
 
   /* ---------- hero ---------- */
@@ -345,6 +362,37 @@
     letter-spacing: 0.02em;
   }
 
+  footer .byline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  footer .byline span {
+    opacity: 0.75;
+  }
+
+  /*
+   * The supplied artwork is black lettering for a light surface — true in
+   * this page's light theme, not in its dark one. Rather than recolour art
+   * that was not drawn to be recoloured (a purple waveform bar under a CSS
+   * invert comes out an unrelated green), it keeps the light surface it
+   * needs in a small chip of its own.
+   */
+  footer .byline .chip {
+    background: #ffffff;
+    border-radius: 3px;
+    padding: 3px 7px;
+    display: flex;
+    align-items: center;
+  }
+
+  footer .byline img {
+    height: 13px;
+    width: auto;
+    display: block;
+  }
+
   /* ---------- responsive ---------- */
 
   @media (max-width: 720px) {
@@ -360,6 +408,12 @@
   <header class="top">
     <div class="mark"><span class="dot"></span>VeraForm</div>
   </header>
+
+  <div class="reveal">
+    <video autoplay muted playsinline aria-hidden="true">
+      <source src="assets/soundsafe-reveal.mp4" type="video/mp4">
+    </video>
+  </div>
 
   <section class="hero">
     <div>
@@ -446,7 +500,10 @@
   </section>
 
   <footer>
-    <span>VeraForm Desktop · v0.1.0</span>
+    <div class="byline">
+      <span>VeraForm Desktop · v0.1.0 by</span>
+      <span class="chip"><img src="assets/soundsafe-banner.png" alt="SoundSafe.ai"></span>
+    </div>
     <span class="fmono">Video analysis live &nbsp;·&nbsp; Audio analysis live</span>
   </footer>
 
